@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Modern_SwiftUI_Bootcamp_Task_5App: App {
+
+    // DI Container
+    private let container: AppContainer
+
+    init() {
+        self.container = AppContainer()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: container.makeTaskListViewModel())
         }
+        .modelContainer(container.modelContainer)
     }
 }
+
